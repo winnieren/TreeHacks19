@@ -1,0 +1,23 @@
+{
+  "name": "TreeHacks19",
+  "version": "1.0.0",
+  "description": "treehacks 2019 project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wrjren/TreeHacks19.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wrjren/TreeHacks19/issues"
+  },
+  "homepage": "https://github.com/wrjren/TreeHacks19#readme",
+  "dependencies": {
+    "@types/arcgis-js-api": "^4.10.0"
+  }
+}
