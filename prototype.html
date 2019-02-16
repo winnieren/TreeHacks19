@@ -180,8 +180,8 @@
            if (navigator.geoLocation) {
             navigator.geolocation.getCurrentPosition(recordPosition);
            } else {
-            update['reportlatitude'] = 0;
-            update['reportlongitude'] = 0;
+            update['reportlatitude'] = -1;
+            update['reportlongitude'] = -1;
            }
 
         function recordPosition(position){
