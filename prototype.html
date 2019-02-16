@@ -178,13 +178,18 @@
 
           /* PROOF OF CONCEPT ADDED FUNCTIONS */
            if (navigator.geoLocation) {
+             console.log('GOT PAST IF NAVIGATOR');
             navigator.geolocation.getCurrentPosition(recordPosition);
            } else {
+             console.log('GEOLOCATION NOT SUPPORTED');
             update['reportlatitude'] = -1;
             update['reportlongitude'] = -1;
            }
 
         function recordPosition(position){
+          console.log('GOT TO RECORDING POSITION');
+          console.log('position.coords.latitude');
+          console.log('position.coords.longitude');
           update['reportlatitude'] = position.coords.latitude;
           update['reportlongitude'] = position.coords.longitude;
         }
