@@ -119,17 +119,26 @@
         outFields: ["*"],
         popupEnabled: false,
         id: "incidentsLayer"
-      });
+      })
+
+
+      const reportlayer = new FeatureLayer({
+        url: "https://services9.arcgis.com/ErpdjzimvfupJaSy/arcgis/rest/services/reportlayer/FeatureServer/0",
+        outFields: ["*"],
+        popupEnabled: false,
+        id: "reportLayer"
+      })
 
       const map = new Map({
         basemap: "dark-gray",
-        layers: [featureLayer]
+        // layers: [featureLayer]
+        layers: [reportlayer]
       });
 
       const view = new MapView({
         container: "viewDiv",
         map: map,
-        center: [-117.18, 34.06],
+        center: [-122.174, 37.428],
         zoom: 15
       });
 
@@ -137,20 +146,25 @@
       // FeatureForm displays attributes of fields specified in fieldConfig.
       const featureForm = new FeatureForm({
         container: "formDiv",
-        layer: featureLayer,
+        // layer: featureLayer,
+        layer: reportlayer,
         fieldConfig: [
           {
-            name: "IncidentType",
-            label: "Choose incident type"
+            name: "reporttype",
+            label: "Type report type"
           },
           {
-            name: "IncidentDescription",
+            name: "reportsubtype",
+            label: "Type report subtype"
+          },
+          {
+            name: "reportdesc",
             label: "Describe the problem"
           },
-          {
-            name: "IncidentLocation",
-            label: "Where it at tho"
-          }
+          // {
+          //   name: "IncidentLocation",
+          //   label: "Where it at tho"
+          // }
 
         ]
       });
@@ -160,45 +174,63 @@
       featureForm.on("submit", function(){
         if (editFeature) {
           // Grab updated attributes from the form.
-          const updated = featureForm.getValues();
+          const update = featureForm.getValues();
 
           /* PROOF OF CONCEPT ADDED FUNCTIONS */
-          // if (navigator.geoLocation) {
+           if (navigator.geoLocation) {
             navigator.geolocation.getCurrentPosition(recordPosition);
-          // } else {
-            // console.log("YOU FUCKED UP")
-          // }
-        var lat = 0;
-        var lon = 0;
+           } else {
+            update['reportlatitude'] = 0;
+            update['reportlongitude'] = 0;
+           }
+
         function recordPosition(position){
-          lat = position.coords.latitude;
-          lon = position.coords.longitude;
+          update['reportlatitude'] = position.coords.latitude;
+          update['reportlongitude'] = position.coords.longitude;
         }
 
-          db.collection('reports').add({
-            reportType: updated['IncidentType'].toString(),
-            reportDesc: updated['IncidentDescription'],
-            reportLoc: new firebase.firestore.GeoPoint(lat, lon)
-          })
+        db.collection('reports').add({
+          reporttype: update['reporttype'],
+          reportsubtype: update['reportsubtype'],
+          reportdesc: update['reportdesc'],
+          reportLoc: new firebase.firestore.GeoPoint(update['reportlatitude'], update['reportlongitude'])
+
+        })
+
+        // Object.keys(updated).forEach(function(name) {
+        //
+        //   db.collection('reports').add({
+        //     // if (updated[name] != null){
+        //       name: updated[name]
+        //     // }
+        //   })
+        //
+        // });
+
+          // db.collection('reports').add({
+          //   reportType: updated['IncidentType'].toString(),
+          //   reportDesc: updated['IncidentDescription'],
+          //   reportLoc: new firebase.firestore.GeoPoint(lat, lon)
+          // })
 
         /* ************************************************* */
 
           // Loop through updated attributes and assign
           // the updated values to feature attributes.
-          var i = 0;
-          Object.keys(updated).forEach(function(name) {
-
-            editFeature.attributes[name] = updated[name];
-            console.log(i + ' ' + name + ' ' + updated[name]);
-            i = i + 1;
-          });
-
-          // Setup the applyEdits parameter with updates.
-          const edits = {
-            updateFeatures: [editFeature]
-          };
-          applyEditsToIncidents(edits);
-          document.getElementById("viewDiv").style.cursor = "auto"
+          // var i = 0;
+          // Object.keys(updated).forEach(function(name) {
+          //
+          //   editFeature.attributes[name] = updated[name];
+          //   console.log(i + ' ' + name + ' ' + updated[name]);
+          //   i = i + 1;
+          // });
+          //
+          // // Setup the applyEdits parameter with updates.
+          // const edits = {
+          //   updateFeatures: [editFeature]
+          // };
+          // applyEditsToIncidents(edits);
+          // document.getElementById("viewDiv").style.cursor = "auto"
         }
       });
 
@@ -209,7 +241,7 @@
       // element to display feature templates from incidentsLayer
       const templates = new FeatureTemplates({
         container: "addTemplatesDiv",
-        layers: [featureLayer]
+        layers: [reportlayer]
       });
 
       // Listen for when a template item is selected
@@ -239,7 +271,7 @@
             editFeature = new Graphic({
               geometry: point,
               attributes: {
-                "IncidentType": attributes.IncidentType
+                "reporttype": attributes.reporttype
               }
             });
 
@@ -255,7 +287,7 @@
         });
       });
 
-      // Call FeatureLayer.applyEdits() with specified params.
+    //  Call FeatureLayer.applyEdits() with specified params.
       function applyEditsToIncidents(params) {
         // unselectFeature();
         featureLayer.applyEdits(params).then(function(editsResult) {
@@ -300,11 +332,11 @@
               if (response.results.length === 0) {
                 toggleEditingDivs("block", "none");
               }
-              else if (response.results[0].graphic && response.results[0].graphic.layer.id == "incidentsLayer") {
+              else if (response.results[0].graphic && response.results[0].graphic.layer.id == "reportLayer") {
                 if (addFeatureDiv.style.display === "block"){
                   toggleEditingDivs("none", "block");
                 }
-                selectFeature(response.results[0].graphic.attributes[featureLayer.objectIdField]);
+                selectFeature(response.results[0].graphic.attributes[reportlayer.objectIdField]);
               }
             });
           }
