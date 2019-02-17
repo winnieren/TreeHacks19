@@ -75,10 +75,10 @@
         <li>Suspicious Areas: 5</li>
         <li>Others: 2</li>
       </ul>
-      <div id="addTemplatesDiv" style="background:#fff;"></div>
+      <!-- <div id="addTemplatesDiv" style="background:#fff;"></div> -->
     </div>
     <!-- Trigger/Open The Modal -->
-<button id="formReportButton" onclick="displayReportButtons()"> Issue</button>
+<!-- <button id="formReportButton" onclick="displayReportButtons()"> Issue</button> -->
 
 <div id="form1" class="reportForm">
   <div class="modal-content">
@@ -87,14 +87,14 @@
           <p>What type of issues would you like to report?</p>
   </div>
       <div class="hazardType">
-    <button id="formButton" onclick="displayReport()">Hazardous</button>
-    <button id="susButton" onclick="displaySusReport()">Suspicious Activity</button>
-    <button id="accessButton" onclick="displayAccReport()">Accessibilty</button>
-    <button id="idButton" onclick="displayOtherReport()">Other</button>
+    <button id="hazardBtn" >Hazardous</button>
+    <button id="susBtn">Suspicious Activity</button>
+    <button id="accBtn">Accessibilty</button>
+    <button id="idBtn" >Other</button>
   </div>
   </div>
-        
-  
+
+
 </div>
 <div id="form" class="reportForm">
 
@@ -109,10 +109,10 @@
 
                     <p>Type of Hazard:</p>
                 <div class="tags">
-                        <button><a>Wet</a></button>
-                        <button><a>Button</a></button>
-                        <button><a>Falling</a></button>
-                        <button><a>Others</a></button>
+                        <button id="wetBtn" type="button"><a>Wet</a></button>
+                        <button id="strucBtn" type="button"><a>Structural</a></button>
+                        <button id="fallBtn" type="button"><a>Falling</a></button>
+                        <button id="otherBtn" type="button"><a>Others</a></button>
                 </div>
                 <div class="textInput">
                         Short Description of Issue:<br>
@@ -120,7 +120,7 @@
                     </div>
             </div>
            <div class = submit>
-               <button>Submit</button>
+               <button id="submitBtn" type="button">Submit</button>
            </div>
         </form>
     </div>
@@ -139,10 +139,10 @@
 
                     <p>Reason:</p>
                 <div class="tags">
-                        <button><a>Dark</a></button>
-                        <button><a>Hidden</a></button>
-                        <button><a>Isolated</a></button>
-                        <button><a>Others</a></button>
+                        <button id="darkBtn" type="button"><a>Dark</a></button>
+                        <button id="hiddenBtn" type="button"><a>Hidden</a></button>
+                        <button id="isolatedBtn" type="button"><a>Isolated</a></button>
+                        <button id="otherBtn" type="button"><a>Others</a></button>
                 </div>
                 <div class="textInput">
                         Short Description of Issue:<br>
@@ -150,7 +150,7 @@
                     </div>
             </div>
            <div class = submit>
-               <button>Submit</button>
+               <button id="submitBtn" type="button">Submit</button>
            </div>
         </form>
     </div>
@@ -169,10 +169,10 @@
 
                     <p>Type of Hazard:</p>
                 <div class="tags">
-                        <button><a>Wheelchair</a></button>
-                        <button><a>Vision</a></button>
-                        <button><a>Gender</a></button>
-                        <button><a>Others</a></button>
+                        <button id="wheelBtn" type="button"><a>Wheelchair</a></button>
+                        <button id="visionBtn" type="button"><a>Vision</a></button>
+                        <button id="genderBtn" type="button"><a>Gender</a></button>
+                        <button id="otherBtn" type="button"><a>Others</a></button>
                 </div>
                 <div class="textInput">
                         Short Description of Issue:<br>
@@ -180,7 +180,7 @@
                     </div>
             </div>
            <div class = submit>
-               <button>Submit</button>
+               <button id="submitBtn" type="button">Submit</button>
            </div>
         </form>
     </div>
@@ -203,7 +203,7 @@
                     </div>
             </div>
            <div class = submit>
-               <button>Submit</button>
+               <button id="submitBtn" type="button">Submit</button>
            </div>
         </form>
     </div>
@@ -233,7 +233,7 @@
                     </div>
             </div>
            <div class = submit>
-               <button>Submit</button>
+               <button id="submitBtn" type="button">Submit</button>
            </div>
         </form>
     </div>
