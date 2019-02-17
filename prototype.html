@@ -172,33 +172,35 @@
       // Listen to the feature form's submit event.
       // Update feature attributes shown in the form.
       featureForm.on("submit", function(){
+
+        var lat = 0;
+        var lon = 0;
+
         if (editFeature) {
           // Grab updated attributes from the form.
           const update = featureForm.getValues();
 
           /* PROOF OF CONCEPT ADDED FUNCTIONS */
            if (navigator.geolocation) {
-             console.log('GOT PAST IF NAVIGATOR');
             navigator.geolocation.getCurrentPosition(recordPosition);
            } else {
-             console.log('GEOLOCATION NOT SUPPORTED');
-            update['reportlatitude'] = -1;
-            update['reportlongitude'] = -1;
+            lat = -1;
+            lon = -1;
            }
 
         function recordPosition(position){
-          console.log('GOT TO RECORDING POSITION');
-          console.log('position.coords.latitude');
-          console.log('position.coords.longitude');
-          update['reportlatitude'] = position.coords.latitude;
-          update['reportlongitude'] = position.coords.longitude;
+          // console.log(position.coords.latitude);
+          // console.log(position.coords.longitude);
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
         }
 
         db.collection('reports').add({
           reporttype: update['reporttype'],
           reportsubtype: update['reportsubtype'],
           reportdesc: update['reportdesc'],
-          reportLoc: new firebase.firestore.GeoPoint(update['reportlatitude'], update['reportlongitude'])
+          reportlatitude: lat,
+          reportlongitude: lon
 
         })
 
