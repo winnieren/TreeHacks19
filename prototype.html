@@ -109,18 +109,18 @@
 
                     <p>Type of Hazard:</p>
                 <div class="tags">
-                        <button><a>Wet</a></button>
-                        <button><a>Button</a></button>
-                        <button><a>Falling</a></button>
-                        <button><a>Others</a></button>
+                        <button type = "button" class = "toggle"><a>Wet</a></button>
+                        <button type = "button" class = "toggle"><a>Button</a></button>
+                        <button type = "button" class = "toggle"><a>Falling</a></button>
+                        <button type = "button" class = "toggle"> <a>Others</a></button>
                 </div>
                 <div class="textInput">
                         Short Description of Issue:<br>
-                        <input type="text" name="Description"><br>
+                        <input type="text" name="Description" id = "description"><br>
                     </div>
             </div>
            <div class = submit>
-               <button>Submit</button>
+               <button onclick="didPressSubmit()">Submit</button>
            </div>
         </form>
     </div>

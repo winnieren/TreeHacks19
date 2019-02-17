@@ -192,7 +192,7 @@
         //  Call FeatureLayer.applyEdits() with specified params.
           function applyEditsToIncidents(params) {
             // unselectFeature();
-            featureLayer.applyEdits(params).then(function(editsResult) {
+            reportlayer.applyEdits(params).then(function(editsResult) {
               // Get the objectId of the newly added feature.
               // Call selectFeature function to highlight the new feature.
               if (editsResult.addFeatureResults.length > 0 || editsResult.updateFeatureResults.length > 0) {
@@ -317,6 +317,7 @@
         });
 
         function displayReport() {
+
           var form = document.getElementById('form');
           var btn = document.getElementById("formButton");
           var span = document.getElementsByClassName("close")[0];
@@ -342,7 +343,6 @@
 
         
         function displayReportButtons() {
-
           var form = document.getElementById('form1');
           var btn = document.getElementById("formReportButton");
           var span = document.getElementsByClassName("close")[0];
@@ -363,4 +363,21 @@
 
           }
         }
+
+        function didPressSubmit(geometry) {
+          var category = "Hazard"
+          var subcategory = "Wet"
+          var description = document.getElementById("description").value
+
+          var x = -200.28910
+          var y = 34.15542
+      
+          var attributes = {
+              category : category,
+              subcategory : subcategory,
+              description : description
+          }
+          
+          return attributes
+      }
  }

@@ -34,6 +34,7 @@
 
 .tags button:focus{
     background-color: darkblue;
+    outline:0;
 }
 
 .tags button a:visited{
