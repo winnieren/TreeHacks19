@@ -317,22 +317,45 @@
         });
 
         function displayReport() {
-            var x = document.getElementById('form');
-
-            if (x.style.display === "none"){
-              x.style.display = "block";
+          var form = document.getElementById('form');
+          var btn = document.getElementById("formButton");
+          var span = document.getElementsByClassName("close")[0];
+  
+            if(form.style.display == 'block') { 
+              form.style.display = 'none';
             } else {
-              x.style.display = "none";
+              form.style.display = 'block';
             }
+
+          span.onclick = function() {
+            form.style.display = "none";
+
+          }
+          window.onclick = function(event) {
+            if (event.target == form) {
+              form.style.display = "none";
+
+
+            }
+          }
         }
 
         
         function displayReportButtons() {
             var x = document.getElementById('form1');
 
-            if (x.style.display === "none"){
-              x.style.display = "block";
-            } else {
-              x.style.display = "none";
+          var form = document.getElementById('form');
+          var btn = document.getElementById("formButton");
+          var span = document.getElementsByClassName("close")[0];
+          btn.onclick = function() {
+            form.style.display = "block";
+          }
+          span.onclick = function() {
+            form.style.display = "none";
+          }
+          window.onclick = function(event) {
+            if (event.target == form) {
+              form.style.display = "none";
             }
         }
+ }
