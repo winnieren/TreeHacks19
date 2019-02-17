@@ -342,20 +342,25 @@
 
         
         function displayReportButtons() {
-            var x = document.getElementById('form1');
 
-          var form = document.getElementById('form');
-          var btn = document.getElementById("formButton");
+          var form = document.getElementById('form1');
+          var btn = document.getElementById("formReportButton");
           var span = document.getElementsByClassName("close")[0];
-          btn.onclick = function() {
-            form.style.display = "block";
+          if(form.style.display == 'block') { 
+            form.style.display = 'none';
+          } else {
+            form.style.display = 'block';
           }
-          span.onclick = function() {
+
+        span.onclick = function() {
+          form.style.display = "none";
+
+        }
+        window.onclick = function(event) {
+          if (event.target == form) {
             form.style.display = "none";
+
+
           }
-          window.onclick = function(event) {
-            if (event.target == form) {
-              form.style.display = "none";
-            }
         }
  }
