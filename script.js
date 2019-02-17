@@ -325,3 +325,14 @@
               x.style.display = "none";
             }
         }
+
+        
+        function displayReportButtons() {
+            var x = document.getElementById('form1');
+
+            if (x.style.display === "none"){
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+        }

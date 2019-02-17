@@ -7,6 +7,12 @@
     margin-left: 40%;
 }
 
+.hazardType{
+    margin-left:30%;
+    justify-content: center;
+    align-content: center;
+}
+
 .tags button{  
     background-color:lightblue; /* Green */
     border: none;
@@ -60,4 +66,23 @@
     float:right;
     margin-top:1%;
     margin-right:35%;
+}
+
+.hazardType button{
+    display:block;
+    justify-content: center;
+    align-content: center;
+    margin-top:2%;
+    margin-left:15%;
+    width:300px;
+    padding:5px;
+}
+
+.hazardType button:hover{
+    display:block;
+    justify-content: center;
+    align-content: center;
+    margin-left:15%;
+    margin-top:2%;
+    cursor: pointer;
 }
