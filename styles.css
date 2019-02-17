@@ -132,12 +132,16 @@
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+li{
+  text-decoration: none;
+  list-style: none;
+}
 
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
+  height:40%;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 

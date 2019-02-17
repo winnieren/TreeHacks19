@@ -17,7 +17,9 @@
     background-color:lightblue; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    margin-bottom: 2%;
+    padding: 8px 30px;
+    margin-right:2%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -26,6 +28,7 @@
 }
 
 .tags button:hover{
+    background-color: darkblue;
     cursor: pointer;
 }
 
@@ -61,11 +64,14 @@
     border-radius: 5px;
     font-size: 16px;
 }
+.submit button:hover{
+    cursor: pointer;
+}
 
 .submit{
     float:right;
     margin-top:1%;
-    margin-right:35%;
+    margin-right:30%;
 }
 
 .hazardType button{
