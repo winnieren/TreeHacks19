@@ -317,20 +317,25 @@
         });
 
         function displayReport() {
-          console.log(e.style.display);
-
           var form = document.getElementById('form');
           var btn = document.getElementById("formButton");
           var span = document.getElementsByClassName("close")[0];
-          btn.onclick = function() {
-            form.style.display = "block";
-          }
+  
+            if(form.style.display == 'block') { 
+              form.style.display = 'none';
+            } else {
+              form.style.display = 'block';
+            }
+
           span.onclick = function() {
             form.style.display = "none";
+
           }
           window.onclick = function(event) {
             if (event.target == form) {
               form.style.display = "none";
+
+
             }
           }
         }
