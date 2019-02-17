@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Temporary Form</title>
+</head>
+
+<body>
+    <form id = "forms">
+        <!-- type, substype, description -->
+        Category: <br>
+        <input type="text" id = "category">
+        <br>
+        Sub Category:<br>
+        <input type="text" id = "subcategory">
+        <br>
+        Description:<br>
+        <input type="text" id = "description">
+        <br>
+        <input type="submit" value="Submit" onclick="didPressSubmit()">
+      </form> 
+
+
+      <script>
+          function didPressSubmit() {
+            var category = document.getElementById("category").value
+            var subcategory = document.getElementById("subcategory").value
+            var description = document.getElementById("description").value
+            var x = 1.0
+            var y = 1.0
+          }
+
+
+      </script>
+</body>
+
+</html>
