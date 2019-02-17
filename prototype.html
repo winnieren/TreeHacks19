@@ -189,20 +189,19 @@
            }
 
         function recordPosition(position){
-          // console.log(position.coords.latitude);
-          // console.log(position.coords.longitude);
-          lat = position.coords.latitude;
-          lon = position.coords.longitude;
+
+          db.collection('reports').add({
+            reporttype: update['reporttype'],
+            reportsubtype: update['reportsubtype'],
+            reportdesc: update['reportdesc'],
+            reportlatitude: position.coords.latitude,
+            reportlongitude: position.coords.longitude
+
+          })
+
         }
 
-        db.collection('reports').add({
-          reporttype: update['reporttype'],
-          reportsubtype: update['reportsubtype'],
-          reportdesc: update['reportdesc'],
-          reportlatitude: lat,
-          reportlongitude: lon
 
-        })
 
         // Object.keys(updated).forEach(function(name) {
         //
