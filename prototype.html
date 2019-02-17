@@ -331,10 +331,15 @@
               // If a user clicks on an incident feature, select the feature.
               if (response.results.length === 0) {
                 toggleEditingDivs("block", "none");
+                console.log("About to create new feature - HI2")
+                window.open('./form.html', "_self")
+                
+                
               }
               else if (response.results[0].graphic && response.results[0].graphic.layer.id == "reportLayer") {
                 if (addFeatureDiv.style.display === "block"){
                   toggleEditingDivs("none", "block");
+                  
                 }
                 selectFeature(response.results[0].graphic.attributes[reportlayer.objectIdField]);
               }
@@ -346,6 +351,7 @@
       // Highlights the clicked feature and display
       // the feature form with the incident's attributes.
       function selectFeature(objectId) {
+        console.log("G")
         // query feature from the server
         featureLayer.queryFeatures({
           objectIds: [objectId],
