@@ -177,7 +177,7 @@
           const update = featureForm.getValues();
 
           /* PROOF OF CONCEPT ADDED FUNCTIONS */
-           if (navigator.geoLocation) {
+           if (navigator.geolocation) {
              console.log('GOT PAST IF NAVIGATOR');
             navigator.geolocation.getCurrentPosition(recordPosition);
            } else {
