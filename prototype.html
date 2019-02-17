@@ -33,34 +33,34 @@
     var db = firebase.firestore();
   </script>
   <script src="https://js.arcgis.com/4.10/"></script>
-  
+
   <script src="script.js"></script>
   <script>
-          // Get the modal
-      var modal = document.getElementById('form');
-      
-      // Get the button that opens the modal
-      var btn = document.getElementById("formButton");
-      
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
-      
-      // When the user clicks on the button, open the modal 
-      btn.onclick = function() {
-        modal.style.display = "block";
-      }
-      
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-      
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
+      //     // Get the modal
+      // var modal = document.getElementById('form');
+      //
+      // // Get the button that opens the modal
+      // var btn = document.getElementById("formButton");
+      //
+      // // Get the <span> element that closes the modal
+      // var span = document.getElementsByClassName("close")[0];
+      //
+      // // When the user clicks on the button, open the modal
+      // btn.onclick = function() {
+      //   modal.style.display = "block";
+      // }
+      //
+      // // When the user clicks on <span> (x), close the modal
+      // span.onclick = function() {
+      //   modal.style.display = "none";
+      // }
+      //
+      // // When the user clicks anywhere outside of the modal, close it
+      // window.onclick = function(event) {
+      //   if (event.target == modal) {
+      //     modal.style.display = "none";
+      //   }
+      // }
       </script>
 </head>
 
@@ -77,18 +77,18 @@
       <div id="addTemplatesDiv" style="background:#fff;"></div>
     </div>
     <!-- Trigger/Open The Modal -->
-<button id="formButton" onclick="toggleEditingDivs">Report Issue</button>
-<div id="form" class="reportForm"> 
-  
+<button id="formButton" onclick="displayReport()">Report Issue</button>
+<div id="form" class="reportForm">
+
     <span class="close">&times;</span>
     <div class="modal-content">
         <form>
-            <div class="header"> 
-                
+            <div class="header">
+
                     <p>What type of issues would you like to report?</p>
             </div>
             <div class="form">
-                
+
                     <p>Type of Hazard:</p>
                 <div class="tags">
                         <button><a>Wet</a></button>
@@ -104,9 +104,9 @@
            <div class = submit>
                <button>Submit</button>
            </div>
-        </form> 
+        </form>
     </div>
-  
+
 </div>
   </div>
   <div id="viewDiv"></div>
