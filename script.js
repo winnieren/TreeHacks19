@@ -1,4 +1,18 @@
-require([
+var config = {
+      apiKey: "AIzaSyD6Gwh92m8HWzrYXIMEcjq6JS3-GZRbZEk",
+      authDomain: "treehacks2019-4d8cf.firebaseapp.com",
+      databaseURL: "https://treehacks2019-4d8cf.firebaseio.com",
+      projectId: "treehacks2019-4d8cf",
+      storageBucket: "treehacks2019-4d8cf.appspot.com",
+      messagingSenderId: "33180533614"
+    };
+
+firebase.initializeApp(config);
+
+
+var db = firebase.firestore();
+
+const obj = require([
     "esri/Map",
     "esri/views/MapView",
     "esri/layers/FeatureLayer",
@@ -21,6 +35,25 @@ require([
       id: "incidentsLayer"
     })
 
+    function addPoint(type, subtype, desc, point){
+
+      console.log("got here");
+      editFeature = new Graphic({
+        geometry: point,
+      });
+      editFeature.attributes = {
+          reporttype: type,
+          reportsubtype: subtype,
+          reportdesc: desc
+      };
+
+      const edits = {
+        addFeatures: [editFeature]
+      };
+      applyEditsToIncidents(edits);
+      document.getElementById("viewDiv").style.cursor = "auto";
+
+    }
 
     const reportlayer = new FeatureLayer({
       url: "https://services9.arcgis.com/ErpdjzimvfupJaSy/arcgis/rest/services/reportlayer/FeatureServer/0",
@@ -158,26 +191,6 @@ require([
         // Setup the applyEdits parameter with adds.
 
     });
-
-    function addPoint(type, subtype, desc="", point){
-
-      console.log("got here");
-      editFeature = new Graphic({
-        geometry: point,
-      });
-      editFeature.attributes = {
-          reporttype: type,
-          reportsubtype: subtype,
-          reportdesc: desc
-      };
-
-      const edits = {
-        addFeatures: [editFeature]
-      };
-      applyEditsToIncidents(edits);
-      document.getElementById("viewDiv").style.cursor = "auto";
-
-    }
 
     // Check if the user clicked on the existing feature
     selectExistingFeature();
@@ -346,6 +359,7 @@ require([
       }
     }
 
+    return this;
     // Update attributes of the selected feature.
     // document.getElementById("btnUpdate").onclick = function() {
     //   // Fires feature form's submit event.
@@ -393,13 +407,37 @@ function displayHazardReport(point=null) {
     }
   };
 
-  wetBtn.addEventListener("click", subtype="wet");
-  strucBtn.addEventListener("click", subtype="structural");
-  fallBtn.addEventListener("click", subtype="falling");
-  otherBtn.addEventListener("click", subtype="other");
+  wetBtn.addEventListener("click", function(){subtype="wet";});
+  strucBtn.addEventListener("click", function(){subtype="structural";});
+  fallBtn.addEventListener("click", function(){subtype="falling";});
+  otherBtn.addEventListener("click", function(){subtype="other";});
 
   submitBtn.addEventListener("click", function(){
-    addPoint("hazard", subtype, "", point)
+
+    var lon = 0;
+    var lat = 0;
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(recordPosition);
+    } else {
+      lon = -1;
+      lat = -1;
+    }
+
+    function recordPosition(position) {
+      lon = position.coords.latitude;
+      lat = position.coords.longitude;
+      db.collection('reports').add({
+        reporttype: 'hazard',
+        reportsubtype: subtype,
+        reportdesc: "",
+        reportlongitude: position.coords.longitude,
+        reportlatitude: position.coords.latitude
+      });
+    }
+
+    closeAll();
+    // obj.addPoint("hazard", subtype, "", point);
   });
 }
 
@@ -430,10 +468,6 @@ function displaySusReport(point=null) {
       closeAll();
 
     }
-
-    submitBtn.addEventListener("click", function(){
-      addPoint("suspicious activity", subtype, "", point);
-    });
   };
 
   darkBtn.addEventListener("click", subtype="dark");
@@ -441,6 +475,31 @@ function displaySusReport(point=null) {
   isolatedBtn.addEventListener("click", subtype="isolated");
   otherBtn.addEventListener("click", subtype="other");
 
+  submitBtn.addEventListener("click", function(){
+    var lon = 0;
+    var lat = 0;
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(recordPosition);
+    } else {
+      lon = -1;
+      lat = -1;
+    }
+
+    function recordPosition(position) {
+      lon = position.coords.latitude;
+      lat = position.coords.longitude;
+      db.collection('reports').add({
+        reporttype: 'suspicious activity',
+        reportsubtype: subtype,
+        reportdesc: "",
+        reportlongitude: position.coords.longitude,
+        reportlatitude: position.coords.latitude
+      });
+    }
+
+    closeAll();
+  });
 }
 
 
@@ -477,7 +536,29 @@ function displayAccReport(point=null) {
   otherBtn.addEventListener("click", subtype="other");
 
   submitBtn.addEventListener("click", function(){
-    addPoint("accessibility", subtype, "", point);
+    var lon = 0;
+    var lat = 0;
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(recordPosition);
+    } else {
+      lon = -1;
+      lat = -1;
+    }
+
+    function recordPosition(position) {
+      lon = position.coords.latitude;
+      lat = position.coords.longitude;
+      db.collection('reports').add({
+        reporttype: 'Accessibilty issue',
+        reportsubtype: subtype,
+        reportdesc: "",
+        reportlongitude: position.coords.longitude,
+        reportlatitude: position.coords.latitude
+      });
+    }
+
+    closeAll();
   });
 }
 
@@ -505,6 +586,7 @@ function displayOtherReport(point=null) {
     form.style.display = 'block';
   }
 
+
   span.onclick = function() {
     form.style.display = "none";
 
@@ -517,7 +599,29 @@ function displayOtherReport(point=null) {
   }
 
   submitBtn.addEventListener("click", function(){
-    addPoint("other", "other", "", point);
+    var lon = 0;
+    var lat = 0;
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(recordPosition);
+    } else {
+      lon = -1;
+      lat = -1;
+    }
+
+    function recordPosition(position) {
+      lon = position.coords.latitude;
+      lat = position.coords.longitude;
+      db.collection('reports').add({
+        reporttype: 'other',
+        reportsubtype: subtype,
+        reportdesc: "",
+        reportlongitude: position.coords.longitude,
+        reportlatitude: position.coords.latitude
+      });
+    }
+
+    closeAll();
   });
 }
 
