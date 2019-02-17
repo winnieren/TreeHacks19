@@ -1,0 +1,25 @@
+{
+  "name": "TreeHacks19",
+  "version": "1.0.0",
+  "description": "treehacks 2019 project",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wrjren/TreeHacks19.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wrjren/TreeHacks19/issues"
+  },
+  "homepage": "https://github.com/wrjren/TreeHacks19#readme"
+}

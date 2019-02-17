@@ -1,0 +1,63 @@
+
+
+.header{
+    justify-content: center;
+    align-content: center;
+    float: center;
+    margin-left: 40%;
+}
+
+.tags button{  
+    background-color:lightblue; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.tags button:hover{
+    cursor: pointer;
+}
+
+.tags button:focus{
+    background-color: darkblue;
+}
+
+.tags button a:visited{
+    background-color: darkblue;
+}
+
+.form{
+    margin-left:30%;
+    justify-content: center;
+    align-content: center;
+    align-content: center;
+}
+.textInput input{
+    border: grey 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    width: 500px;
+}
+
+.submit button{
+    background-color:lightblue; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.submit{
+    float:right;
+    margin-top:1%;
+    margin-right:35%;
+}
