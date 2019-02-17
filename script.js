@@ -340,6 +340,79 @@
           }
         }
 
+        function displaySusReport() {
+            var form = document.getElementById('susform');
+            var btn = document.getElementById("formButton");
+            var span = document.getElementsByClassName("close")[0];
+
+              if(form.style.display == 'block') { 
+                form.style.display = 'none';
+              } else {
+                form.style.display = 'block';
+              }
+  
+            span.onclick = function() {
+              form.style.display = "none";
+  
+            }
+            window.onclick = function(event) {
+              if (event.target == form) {
+                form.style.display = "none";
+  
+  
+              }
+            }
+          }
+
+          
+        function displayAccReport() {
+            var form = document.getElementById('accessform');
+            var btn = document.getElementById("formButton");
+            var span = document.getElementsByClassName("close")[0];
+
+              if(form.style.display == 'block') { 
+                form.style.display = 'none';
+              } else {
+                form.style.display = 'block';
+              }
+  
+            span.onclick = function() {
+              form.style.display = "none";
+  
+            }
+            window.onclick = function(event) {
+              if (event.target == form) {
+                form.style.display = "none";
+  
+  
+              }
+            }
+          }
+
+          
+        function displayOtherReport() {
+            var form = document.getElementById('otherform');
+            var btn = document.getElementById("formButton");
+            var span = document.getElementsByClassName("close")[0];
+
+              if(form.style.display == 'block') { 
+                form.style.display = 'none';
+              } else {
+                form.style.display = 'block';
+              }
+  
+            span.onclick = function() {
+              form.style.display = "none";
+  
+            }
+            window.onclick = function(event) {
+              if (event.target == form) {
+                form.style.display = "none";
+  
+  
+              }
+            }
+          }
         
         function displayReportButtons() {
 

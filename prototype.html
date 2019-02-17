@@ -88,9 +88,9 @@
   </div>
       <div class="hazardType">
     <button id="formButton" onclick="displayReport()">Hazardous</button>
-    <button >Suspicious Activity</button>
-    <button>Accessibilty</button>
-    <button>Other</button>
+    <button id="susButton" onclick="displaySusReport()">Suspicious Activity</button>
+    <button id="accessButton" onclick="displayAccReport()">Accessibilty</button>
+    <button id="idButton" onclick="displayOtherReport()">Other</button>
   </div>
   </div>
         
@@ -103,7 +103,120 @@
         <form>
             <div class="header">
 
-                    <p>What type of issues would you like to report?</p>
+                    <p>What type of Hazard would you like to report?</p>
+            </div>
+            <div class="form">
+
+                    <p>Type of Hazard:</p>
+                <div class="tags">
+                        <button><a>Wet</a></button>
+                        <button><a>Button</a></button>
+                        <button><a>Falling</a></button>
+                        <button><a>Others</a></button>
+                </div>
+                <div class="textInput">
+                        Short Description of Issue:<br>
+                        <input type="text" name="Description"><br>
+                    </div>
+            </div>
+           <div class = submit>
+               <button>Submit</button>
+           </div>
+        </form>
+    </div>
+
+</div>
+<div id="susform" class="reportForm">
+
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <form>
+            <div class="header">
+
+                    <p>Why is this area prone to Suspicious activities?</p>
+            </div>
+            <div class="form">
+
+                    <p>Reason:</p>
+                <div class="tags">
+                        <button><a>Dark</a></button>
+                        <button><a>Hidden</a></button>
+                        <button><a>Isolated</a></button>
+                        <button><a>Others</a></button>
+                </div>
+                <div class="textInput">
+                        Short Description of Issue:<br>
+                        <input type="text" name="Description"><br>
+                    </div>
+            </div>
+           <div class = submit>
+               <button>Submit</button>
+           </div>
+        </form>
+    </div>
+
+</div>
+<div id="accessform" class="reportForm">
+
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <form>
+            <div class="header">
+
+                    <p>What type of Accessibilty issue would you like to report?</p>
+            </div>
+            <div class="form">
+
+                    <p>Type of Hazard:</p>
+                <div class="tags">
+                        <button><a>Wheelchair</a></button>
+                        <button><a>Vision</a></button>
+                        <button><a>Gender</a></button>
+                        <button><a>Others</a></button>
+                </div>
+                <div class="textInput">
+                        Short Description of Issue:<br>
+                        <input type="text" name="Description"><br>
+                    </div>
+            </div>
+           <div class = submit>
+               <button>Submit</button>
+           </div>
+        </form>
+    </div>
+
+</div>
+
+<div id="otherform" class="reportForm">
+
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <form>
+            <div class="header">
+
+                    <p>Please provide a short description of the issue:</p>
+            </div>
+            <div class="form">
+                <div class="textInput">
+                        What needs to change:<br>
+                        <input type="text" name="Description"><br>
+                    </div>
+            </div>
+           <div class = submit>
+               <button>Submit</button>
+           </div>
+        </form>
+    </div>
+
+</div>
+<div id="form" class="reportForm">
+
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <form>
+            <div class="header">
+
+                    <p>What type of Hazard would you like to report?</p>
             </div>
             <div class="form">
 
